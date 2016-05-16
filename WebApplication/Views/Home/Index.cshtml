@@ -1,0 +1,86 @@
+﻿
+@* Home View *@
+<script type="text/ng-template" id="../../Static/App/Home.html">
+    <h1>Home</h1>
+    <h3>{{message}}</h3>
+</script>
+
+@* Client View *@
+<script type="text/ng-template" id="../../Static/App/Client.html">
+    <h1>Client </h1>
+
+    <h3>{{message}}</h3>
+
+    <div id="content" ng-controller="ClientController">
+        <span ng-show="isViewLoading" class="viewLoading">
+            <img src="~/Content/images/ng-loader.gif" /> loading...
+        </span>
+        <div ng-class="result">{{message}}</div>
+        <hr />
+        <form ng-submit="submitForm()" name="frmClient">
+            <div>
+                <label for="email">Company Name</label>
+                <input type="text" ng-model="cust.CompanyName" name="companyname" placeholder="Enter your company name" required ng-minlength="4" ng-maxlength="14" />
+                <span class="error" ng-show="(frmClient.$dirty||submitted) && frmClient.companyname.$error.required">Customer name is Required</span>
+                <span class="error" ng-show="frmClient.$dirty && frmClient.companyname.$error.minlength">Minimum length required is 3</span>
+                <span class="error" ng-show="frmClient.$dirty && frmClient.companyname.$error.maxlength">Minimum length required is 15</span>
+            </div>
+            <div>
+                <label for="email">First Name</label>
+                <input type="text" ng-model="cust.FirstName" name="firstname" placeholder="Enter your first name" required ng-minlength="4" ng-maxlength="14" />
+                <span class="error" ng-show="(frmClient.$dirty||submitted) && frmClient.firstname.$error.required">Customer name is Required</span>
+                <span class="error" ng-show="frmClient.$dirty && frmClient.firstname.$error.minlength">Minimum length required is 5</span>
+                <span class="error" ng-show="frmClient.$dirty && frmClient.firstname.$error.maxlength">Minimum length required is 15</span>
+            </div>
+            <div>
+                <label for="email">Last Name</label>
+                <input type="text" ng-model="cust.LastName" name="lastname" placeholder="Enter your last name" required ng-minlength="4" ng-maxlength="14" />
+                <span class="error" ng-show="(frmClient.$dirty||submitted) && frmClient.lastname.$error.required">Customer name is Required</span>
+                <span class="error" ng-show="frmClient.$dirty && frmClient.lastname.$error.minlength">Minimum length required is 5</span>
+                <span class="error" ng-show="frmClient.$dirty && frmClient.lastname.$error.maxlength">Minimum length required is 15</span>
+            </div>
+            <div>
+                <label for="email">E-mail address</label>
+                <input type="email" ng-model="cust.Email" name="email" placeholder="Enter your Email" required />
+                <span class="error" ng-show="(frmClient.$dirty ||submitted) && frmClient.email.$error.required">EmailId is Required!</span>
+                <span class="error" ng-show="(frmClient.$dirty ||submitted) && frmClient.$error.email">Invalid EmailId!</span>
+            </div>
+            <div>
+                <input type="submit" value="Submit" ng-disabled="myForm.$invalid">
+            </div>
+        </form>
+        
+        <div id="grid" ui-grid="gridOptions" ui-grid-edit ui-grid-row-edit ui-grid-cellNav class="grid"></div>
+    </div>
+</script>
+
+@* ServerLogin View *@
+<script type="text/ng-template" id="../../Static/App/ServerLogin.html">
+    <h1>ServerLogin</h1>
+    <h3>{{message}}</h3>
+</script>
+
+
+@* Navigation  *@
+
+<ul class="nav navbar-nav">
+    <li><a href="~/#/"><b>Home</b></a></li>
+    <li><a href="~/#/Client"><b>Client</b></a></li>
+    <li><a href="~/#/ServerLogin"><b>Server Login</b></a></li>
+</ul>
+<br>
+@*<a href="~/#/"><b>Home</b></a>
+<a href="~/#/Client"><b>Client</b></a>
+<a href="~/#/ServerLogin"><b>Server Login</b></a>*@
+<div ng-view></div>
+
+@* Styles *@
+<link rel="stylesheet" type="text/css" href="~/Content/ui-grid.css">
+
+@* Scripts *@
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/Scripts/angular-route.min.js"></script>
+<script src="~/ControllersNg/CustomerController.js"></script>
+<script src="~/Scripts/ui-grid.js"></script>
+<script src="~/Scripts/app.js"></script>

@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net451": {
+      "wrappedProject": "../../ApiProxy/ApiProxy.csproj",
+      "bin": {
+        "assembly": "../../ApiProxy/obj/{configuration}/ApiProxy.dll",
+        "pdb": "../../ApiProxy/obj/{configuration}/ApiProxy.pdb"
+      },
+      "dependencies": {
+        "Microsoft.AspNet.WebApi.Client": "5.2.3",
+        "Newtonsoft.Json": "8.0.3"
+      }
+    }
+  }
+}
